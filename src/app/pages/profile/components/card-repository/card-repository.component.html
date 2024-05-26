@@ -1,0 +1,8 @@
+<div class="card my-2">
+    <div class="card-body">
+      <h5 class="card-title">{{repository.name}}</h5>
+      <p class="card-text">{{repository?.description}}</p>
+      <p *ngIf="repository?.stargazers_count"><i class="bi bi-star-fill"></i> {{repository?.stargazers_count}}</p>
+      <a class="btn btn-primary" (click)="navigateUrl(repository.html_url)"><strong>Ir para o repositório</strong></a>
+    </div>
+</div>

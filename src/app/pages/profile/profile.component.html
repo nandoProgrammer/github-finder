@@ -1,0 +1,103 @@
+<section>
+   <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+         <div>
+             <button class="btn btn-primary" (click)="navigateHome()">
+                 <i class="bi bi-arrow-left"></i>
+             </button>
+         </div>
+  
+         <nav aria-label="breadcrumb" class="rounded-3 p-3 mb-4">
+             <ol class="breadcrumb mb-0">
+                 <li class="breadcrumb-item"><a (click)="navigateHome()">Home</a></li>
+                 <li class="breadcrumb-item active" aria-current="page">Perfil</li>
+             </ol>
+         </nav>
+     </div>
+   </div>
+</section>
+<section>
+   <div class="container py-5">
+       <div class="row">
+           <div class="col-lg-4">
+               <div class="card mb-4">
+                   <div class="card-body text-center">
+                       <img *ngIf="profile?.avatar_url" [src]="profile.avatar_url" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;" />
+                       <img *ngIf="!profile?.avatar_url" src="r../../../../../assets/images/Unknown_person.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;" />
+                       <h5 class="mt-3 mb-1">{{profile?.name || 'Não Possui'}}</h5>
+                       <p class="my-1">{{profile?.login || 'Não Possui'}}</p>
+                   </div>
+               </div>
+           </div>
+           <div class="col-lg-8">
+               <div class="card mb-4">
+                   <div class="card-body">
+                       <ng-template [ngIf]="profile?.name">
+                           <div class="row">
+                              <div class="col-sm-12">
+                                 <p class="text-muted mb-0">{{profile.name}}</p>
+                              </div>
+                           </div>
+                           <hr />
+                       </ng-template>
+                       <ng-template [ngIf]="profile?.bio">
+                           <div class="row">
+                              <div class="col-sm-12">
+                                 <p class="text-muted mb-0">{{profile.bio}}</p>
+                              </div>
+                           </div>
+                           <hr />
+                       </ng-template>
+                       
+                       <ng-template [ngIf]="profile?.location">
+                           <div class="row">
+                              <div class="col-sm-12">
+                                 <p class="text-muted mb-0">{{profile.location}}</p>
+                              </div>
+                           </div>
+                           <hr />
+                       </ng-template>
+
+                       <ng-template [ngIf]="profile?.followers">
+                           <div class="row">
+                              <div class="col-sm-3">
+                                 <p class="mb-0">Seguidores:</p>
+                              </div>
+                              <div class="col-sm-9">
+                                 <p class="text-muted mb-0">{{profile.followers}}</p>
+                              </div>
+                           </div>
+                           <hr />
+                       </ng-template>
+                      
+                       <ng-template [ngIf]="profile?.following">
+                           <div class="row">
+                              <div class="col-sm-3">
+                                 <p class="mb-0">Seguindo:</p>
+                              </div>
+                              <div class="col-sm-9">
+                                 <p class="text-muted mb-0">{{profile.following}}</p>
+                              </div>
+                           </div>
+                           <hr />
+                       </ng-template>
+
+                       <ng-template [ngIf]="profile?.twitter_username || profile?.blog">
+                           <div class="row">
+                              <div class="flex">
+                                 <button class="btn btn-primary" *ngIf="profile?.twitter_username" (click)="navigateUrl(profile.twitter_username)">Twitter</button>
+                                 <button class="btn btn-secondary mx-1" *ngIf="profile?.blog" (click)="navigateUrl(profile.blog)">Site</button>
+                              </div>
+                           </div>
+                    </ng-template>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</section>
+<section>
+   <div class="container mb-5">
+       <card-repository *ngFor="let repository of repositories" [repository]="repository"></card-repository>
+   </div>
+</section>
