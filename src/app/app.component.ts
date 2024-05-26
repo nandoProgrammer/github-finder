@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { navigateUrl } from './shared/utils/navigate-url';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'github-finder';
+  navigateUrl = navigateUrl;
 }
