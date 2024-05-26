@@ -1,0 +1,14 @@
+<section>
+  <div class="container py-3">
+      <div class="bg-light rounded-3 p-3 mb-4">
+          <form class="form-inline" [formGroup]="formFilters" (ngSubmit)="send()">
+              <div class="form-group mb-2 w-100">
+                  <label for="userName" class="sr-only">Nome do Usuário:</label>
+                  <input type="text" class="form-control form-control-plaintext" id="userName" formControlName="userName" placeholder="Digite..." />
+              </div>
+              <button type="submit" class="btn btn-primary mb-2 mt-4">Buscar</button>
+          </form>
+      </div>
+  </div>
+</section>
+
